@@ -1,5 +1,5 @@
 DC := docker-compose -f ./docker/docker-compose.yml
-APP := $(DC) exec -i
+APP := $(DC) exec -i php
 
 build:
 	@$(DC) build
@@ -12,3 +12,6 @@ stop:
 
 ssh:
 	@$(APP) bash
+
+analyze:
+	@$(APP) vendor/bin/psalm
