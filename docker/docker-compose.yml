@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  php:
+    build:
+      context: ./php
+      args:
+        TIMEZONE: "Europe/Moscow"
+    networks:
+        - symfony_app
+    volumes:
+      - '../www:/var/www'
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "8088:80"
+    networks:
+      - symfony_app
+    volumes:
+      - '../www:/var/www'
+volumes:
+  symfony_app_var:
+  symfony_app_vendor:
+
+networks:
+  symfony_app:
