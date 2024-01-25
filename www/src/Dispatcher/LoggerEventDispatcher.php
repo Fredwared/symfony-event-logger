@@ -22,7 +22,7 @@ class LoggerEventDispatcher implements EventDispatcherInterface
     }
 
     /**
-     * @param object $event
+     * @param object|LoggingEvent $event
      * @param string|null $eventName
      * @return object
      */
@@ -33,10 +33,5 @@ class LoggerEventDispatcher implements EventDispatcherInterface
         $this->logger->info(sprintf('Event of type %s dispatched', get_class($event)));
 
         return $event;
-    }
-
-    public function addListener($eventName, $listener, $priority = 0)
-    {
-        $this->wrappedDispatcher->addListener($eventName, $listener, $priority);
     }
 }

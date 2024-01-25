@@ -1,5 +1,5 @@
 DC := docker-compose -f ./docker/docker-compose.yml
-APP := $(DC) exec -i app
+APP := $(DC) exec -i
 
 build:
 	@$(DC) build
